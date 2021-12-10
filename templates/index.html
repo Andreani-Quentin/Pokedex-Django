@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <title>Pokedex de Quentin et Yann</title>
+</head>
+<body>
+<div id="main">
+    <div class="container">
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-4 ">
+                <h1 class="text-center mb-5 mt-5">Pokedex</h1>
+                {% if error != "" %}
+                    <div class="card border-danger mb-5">
+                        <div class="card-header text-center">ERREUR</div>
+                        <div class="card-body text-danger text-center">
+                            <h5 class="card-title">Erreur d'identifiant Pokémon</h5>
+                            <p class="card-text">Veuillez choisir un pokémon entre 1 et 151</p>
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="card border-dark mb-5">
+                        <div class="card-header text-center">
+                            <img src="{{ sprite }}" alt="Image de {{ name }}">
+                        </div>
+                        <div class="card-body text-dark">
+                            <h5 class="card-title text-center">{{ name }}</h5>
+                            <div class="card-text">
+                                <p>Taille : {{ pokeheight }}</p>
+                                <p>Poids : {{ pokeweight }}</p>
+                                <p>Type : {{ poketypes }}</p>
+                                <p>Hp : {{ hp }}</p>
+                                <p>Attaque : {{ attack }}</p>
+                                <p>Défense : {{ defense }}</p>
+                                <p>Attaque Spécial : {{ specialAttack }}</p>
+                                <p>Défense Spécial : {{ specialDefense }}</p>
+                                <p>Speed : {{ speed }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-between mb-5">
+                        {% if first != 1 %}
+                            <a class="btn btn-outline-dark" href="/pokedex/{{ previous }}">Pokémon Précedent</a>
+                        {% endif %}
+                        {% if last != 1 %}
+                            <a class="btn btn-outline-dark" href="/pokedex/{{ next }}">Pokémon Suivant</a>
+                        {% endif %}
+                    </div>
+                {% endif %}
+
+                <form action="" method="get">
+                    <div class="input-group mb-3">
+                        <input id="pokeId" type="text" name="pokeId" class="form-control" placeholder="Numéro Pokémon"
+                               aria-label="Numéro Pokémon" aria-describedby="basic-addon2">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary" type="submit">Recherche</button>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+</body>
+</html>
