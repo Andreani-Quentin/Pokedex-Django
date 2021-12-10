@@ -30,7 +30,11 @@
                             <div class="card-text">
                                 <p>Taille : {{ pokeheight }}</p>
                                 <p>Poids : {{ pokeweight }}</p>
-                                <p>Type : {{ poketypes }}</p>
+                                <p>Type :
+                                    {%  for i in poketypes %}
+                                        {{ i }}
+                                    {% endfor %}
+                                </p>
                                 <p>Hp : {{ hp }}</p>
                                 <p>Attaque : {{ attack }}</p>
                                 <p>Défense : {{ defense }}</p>
